@@ -1,0 +1,32 @@
+spring:
+  application:
+    name: member-service
+eureka:
+  client:
+    service-url:
+      defaultZone:
+        http://server1:8761/eureka/,http://server2:8762/eureka/
+#book-service:
+#  ribbon:
+#    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+logging:
+  level:
+    ROOT: info
+    memberservice.client.BookService: debug
+feign:
+  okhttp:
+    enabled: false
+  httpclient:
+    enabled: true
+  client:
+    config:
+      default:
+        loggerLevel: HEADERS
+        connectTimeout: 15000 #客户端向微服务发起连接的最长等待时间
+        readTimeout: 15000 #连接后，等待响应返回的最长时间
+      book-service:
+        loggerLevel: FULL
+        connectTimeout: 5000
+        readTimeout: 5000
+
+debug: true

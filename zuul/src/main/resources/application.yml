@@ -1,0 +1,22 @@
+server:
+  port: 80
+eureka:
+  client:
+    service-url:
+      defaultZone:
+        http://server1:8761/eureka/,http://server2:8762/eureka/
+zuul:
+  routes:
+    book-service-api:
+      path: /bs/**
+      serviceId: book-service
+    member-service-api:
+      path: /ms/**
+      serviceId: member-service
+spring:
+  application:
+    name: zuul
+
+book-service:
+  ribbon:
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule

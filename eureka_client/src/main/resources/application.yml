@@ -1,0 +1,22 @@
+server:
+  port: 80
+spring:
+  application:
+    name: book-service
+eureka:
+  client:
+    service-url:
+      defaultZone:
+        http://server1:8761/eureka/,http://server2:8762/eureka/
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+          - health
+          - info
+          - env
+          - beans
+  endpoint:
+    health:
+      show-details: always

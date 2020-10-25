@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: member-service
+eureka:
+  client:
+    service-url:
+      defaultZone:
+        http://server1:8761/eureka/,http://server2:8762/eureka/
+book-service:
+  ribbon:
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
